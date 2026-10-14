@@ -3,675 +3,810 @@
 <html lang="fa" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GAME DNA | سبک گیمینگ تو</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>قیمت‌سنج | PriceCheck</title>
 
 <style>
 :root {
-    --bg: #080b14;
-    --panel: #111827;
-    --border: #273449;
-    --text: #f1f5f9;
-    --muted: #94a3b8;
-    --purple: #a78bfa;
-    --cyan: #22d3ee;
-    --green: #4ade80;
-    --orange: #fb923c;
+  --bg: #f3f6fb;
+  --card: #ffffff;
+  --text: #172033;
+  --muted: #64748b;
+  --primary: #2563eb;
+  --green: #12805c;
+  --red: #dc2626;
+  --border: #e2e8f0;
 }
-
-* {
-    box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
 body {
-    margin: 0;
-    min-height: 100vh;
-    color: var(--text);
-    background:
-        radial-gradient(ellipse at 10% 0%, #28144a 0, transparent 35%),
-        radial-gradient(ellipse at 95% 60%, #10303c 0, transparent 35%),
-        var(--bg);
-    font-family: Tahoma, Arial, sans-serif;
-    line-height: 1.8;
-}
-
-button {
-    font: inherit;
-    cursor: pointer;
-}
-
-button:focus-visible {
-    outline: 2px solid var(--cyan);
-    outline-offset: 3px;
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: Tahoma, Arial, sans-serif;
+  line-height: 1.8;
 }
 
 .container {
-    width: min(900px, 92%);
-    margin: auto;
-    padding: 25px 0 45px;
+  width: min(100% - 24px, 1000px);
+  margin: 25px auto;
 }
 
 header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 45px;
+  background: linear-gradient(135deg, #1d4ed8, #0891b2);
+  color: white;
+  border-radius: 22px;
+  padding: 25px;
+  margin-bottom: 18px;
 }
 
-.logo {
-    font-size: 22px;
-    font-weight: 900;
-    letter-spacing: 1px;
-}
-
-.logo span {
-    color: var(--cyan);
-}
-
-.badge {
-    color: var(--green);
-    border: 1px solid #166534;
-    background: #052e16;
-    border-radius: 30px;
-    padding: 5px 12px;
-    font-size: 11px;
-}
-
-.hero {
-    text-align: center;
-    margin-bottom: 30px;
-}
-
-.eyebrow {
-    color: var(--cyan);
-    font-size: 12px;
-    font-weight: bold;
-    letter-spacing: 2px;
-}
-
-.hero h1 {
-    font-size: clamp(30px, 6vw, 48px);
-    line-height: 1.5;
-    margin: 12px 0;
-}
-
-.hero h1 span {
-    color: var(--purple);
-}
-
-.hero p {
-    color: var(--muted);
-    font-size: 13px;
-    max-width: 530px;
-    margin: auto;
-}
+header h1 { margin: 0 0 6px; font-size: 28px; }
+header p { margin: 0; opacity: .92; }
 
 .panel {
-    background: rgba(17, 24, 39, .88);
-    border: 1px solid var(--border);
-    border-radius: 20px;
-    padding: 24px;
-    box-shadow: 0 18px 60px #0003;
-    margin-bottom: 18px;
+  background: var(--card);
+  padding: 20px;
+  border-radius: 18px;
+  margin-bottom: 18px;
+  box-shadow: 0 5px 20px #0f172a0b;
 }
 
-.section-title {
-    margin: 0 0 15px;
-    font-size: 17px;
+h2 { font-size: 19px; margin: 0 0 15px; }
+
+.settings {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
 }
 
-.dimensions {
-    display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 10px;
+label {
+  display: block;
+  font-size: 13px;
+  color: var(--muted);
+  margin-bottom: 5px;
 }
 
-.dimension {
-    padding: 13px 6px;
-    text-align: center;
-    background: #0b1220;
-    border: 1px solid var(--border);
-    border-radius: 13px;
+input, select {
+  width: 100%;
+  min-width: 0;
+  padding: 11px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: white;
+  color: var(--text);
+  font: inherit;
+  font-size: 14px;
 }
 
-.dimension .icon {
-    font-size: 24px;
+input:focus, select:focus {
+  outline: 2px solid #93c5fd;
+  border-color: var(--primary);
 }
 
-.dimension strong {
-    display: block;
-    font-size: 12px;
-    margin-top: 4px;
+button {
+  border: 0;
+  border-radius: 10px;
+  padding: 10px 15px;
+  font: inherit;
+  cursor: pointer;
+  transition: .15s;
 }
 
-.dimension small {
-    color: var(--muted);
-    font-size: 10px;
+button:hover { filter: brightness(.95); }
+button:focus-visible { outline: 3px solid #93c5fd; }
+
+.primary { background: var(--primary); color: white; }
+.secondary { background: #eaf1ff; color: #1d4ed8; }
+.danger { background: #fee2e2; color: #b91c1c; }
+.small { padding: 7px 10px; font-size: 12px; }
+
+.toolbar {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 15px;
 }
 
-.progress-row {
-    display: flex;
-    justify-content: space-between;
-    color: var(--muted);
-    font-size: 12px;
-    margin-bottom: 9px;
+.product-list {
+  display: grid;
+  gap: 12px;
 }
 
-.progress-track {
-    height: 6px;
-    border-radius: 20px;
-    background: #263247;
-    overflow: hidden;
-    margin-bottom: 24px;
+.product {
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 15px;
 }
 
-.progress-fill {
-    width: 0;
-    height: 100%;
-    background: linear-gradient(90deg, var(--purple), var(--cyan));
-    transition: width .3s ease;
+.product-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 10px;
 }
 
-.question-number {
-    color: var(--cyan);
-    font-size: 12px;
-    font-weight: bold;
+.product-top strong { font-size: 15px; }
+
+.fields {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr 1fr 1fr;
+  gap: 10px;
 }
 
-.question-title {
-    font-size: clamp(17px, 3vw, 21px);
-    line-height: 1.9;
-    margin: 7px 0 20px;
+.field { min-width: 0; }
+
+.result {
+  margin-top: 12px;
+  background: #f8fafc;
+  border-radius: 10px;
+  padding: 12px;
+  font-size: 14px;
 }
 
-.answers {
-    display: grid;
-    gap: 11px;
+.result strong { color: var(--primary); }
+
+.product.best {
+  border: 2px solid #16a34a;
+  background: #f0fdf4;
 }
 
-.answer {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    gap: 13px;
-    text-align: right;
-    padding: 13px;
-    border: 1px solid var(--border);
-    border-radius: 13px;
-    background: #0b1220;
-    color: var(--text);
-    transition: border-color .2s, background .2s, transform .2s;
+.best-tag {
+  color: var(--green);
+  font-weight: bold;
+  font-size: 12px;
 }
 
-.answer:hover {
-    border-color: var(--purple);
-    transform: translateY(-1px);
+.error {
+  color: var(--red);
+  font-size: 13px;
+  margin-top: 7px;
 }
 
-.answer.selected {
-    border-color: var(--cyan);
-    background: #12303b;
-    box-shadow: inset -3px 0 var(--cyan);
+.summary {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
 }
 
-.answer-letter {
-    flex: 0 0 35px;
-    height: 35px;
-    display: grid;
-    place-items: center;
-    border: 1px solid #34445c;
-    border-radius: 10px;
-    color: var(--cyan);
-    font-weight: bold;
+.stat {
+  padding: 15px;
+  border-radius: 12px;
+  background: #f8fafc;
 }
 
-.answer.selected .answer-letter {
-    color: #07131a;
-    background: var(--cyan);
-    border-color: var(--cyan);
+.stat span {
+  display: block;
+  color: var(--muted);
+  font-size: 12px;
 }
 
-.answer-text {
-    font-size: 13px;
-    line-height: 1.9;
+.stat strong {
+  display: block;
+  font-size: 17px;
+  margin-top: 5px;
+  overflow-wrap: anywhere;
 }
 
-.navigation {
-    display: flex;
-    justify-content: space-between;
-    gap: 12px;
-    margin-top: 22px;
+.note {
+  color: var(--muted);
+  font-size: 12px;
+  margin-top: 12px;
 }
 
-.btn {
-    border: 0;
-    border-radius: 11px;
-    padding: 11px 19px;
-    font-weight: bold;
+.empty {
+  color: var(--muted);
+  text-align: center;
+  padding: 20px;
 }
 
-.btn-primary {
-    color: #07131a;
-    background: linear-gradient(110deg, var(--cyan), #67e8f9);
+.table-wrap { overflow-x: auto; }
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 13px;
+  white-space: nowrap;
 }
 
-.btn-secondary {
-    color: var(--text);
-    background: #202c40;
-    border: 1px solid #34445c;
+th, td {
+  text-align: right;
+  padding: 10px;
+  border-bottom: 1px solid var(--border);
 }
 
-.btn:disabled {
-    cursor: not-allowed;
-    opacity: .35;
-}
+th { background: #f8fafc; }
 
-.hidden {
-    display: none !important;
-}
-
-.result-header {
-    text-align: center;
-    padding: 12px 0 22px;
-}
-
-.result-icon {
-    font-size: 56px;
-    animation: float 2.5s ease-in-out infinite;
-}
-
-@keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-7px); }
-}
-
-.result-label {
-    color: var(--cyan);
-    font-size: 12px;
-    font-weight: bold;
-}
-
-.result-header h2 {
-    font-size: clamp(23px, 5vw, 34px);
-    margin: 5px 0;
-}
-
-.result-header p {
-    color: var(--muted);
-    font-size: 13px;
-    max-width: 550px;
-    margin: auto;
-}
-
-.result-card {
-    border: 1px solid #55458a;
-    border-radius: 18px;
-    padding: 22px;
-    background: linear-gradient(135deg, #211640, #111827 65%);
-    margin-bottom: 24px;
-}
-
-.result-card h3 {
-    margin: 0 0 10px;
-    font-size: 19px;
-}
-
-.result-card p {
-    color: #d3d9e7;
-    font-size: 13px;
-    margin: 0;
-}
-
-.result-card .disclaimer {
-    color: var(--muted);
-    font-size: 11px;
-    margin-top: 14px;
-}
-
-.chart-title {
-    font-size: 16px;
-    margin-bottom: 5px;
-}
-
-.chart-subtitle {
-    color: var(--muted);
-    font-size: 11px;
-    margin: 0 0 24px;
-}
-
-.bar-row {
-    margin-bottom: 20px;
-}
-
-.bar-heading {
-    display: flex;
-    justify-content: space-between;
-    gap: 12px;
-    align-items: center;
-    font-size: 13px;
-    margin-bottom: 7px;
-}
-
-.bar-name {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.bar-percent {
-    direction: ltr;
-    font-variant-numeric: tabular-nums;
-    color: #e2e8f0;
-}
-
-.bar-track {
-    height: 12px;
-    background: #263247;
-    border-radius: 20px;
-    overflow: hidden;
-}
-
-.bar-fill {
-    height: 100%;
-    width: 0;
-    border-radius: 20px;
-    transition: width .8s ease;
-}
-
-.bar-fill.competition { background: #fb7185; }
-.bar-fill.cooperation { background: #4ade80; }
-.bar-fill.collection { background: #fbbf24; }
-.bar-fill.exploration { background: #a78bfa; }
-
-.result-note {
-    background: #0b1220;
-    color: var(--muted);
-    padding: 14px;
-    border-radius: 12px;
-    font-size: 12px;
-    margin-top: 22px;
-}
-
-.result-actions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-top: 20px;
-}
-
-.result-actions button {
-    flex: 1;
-}
-
-footer {
-    text-align: center;
-    color: #64748b;
-    font-size: 11px;
-    margin-top: 30px;
-}
-
-@media (max-width: 600px) {
-    .container {
-        padding-top: 18px;
-    }
-
-    header {
-        margin-bottom: 30px;
-    }
-
-    .panel {
-        padding: 17px;
-        border-radius: 16px;
-    }
-
-    .dimensions {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
-    .answer {
-        padding: 11px;
-    }
-
-    .navigation .btn {
-        padding: 10px 13px;
-    }
-
-    .result-actions {
-        flex-direction: column;
-    }
+@media (max-width: 700px) {
+  .settings, .summary { grid-template-columns: 1fr; }
+  .fields { grid-template-columns: 1fr 1fr; }
+  header h1 { font-size: 23px; }
+  .panel { padding: 15px; }
 }
 
 @media print {
-    body {
-        background: white;
-        color: #111827;
-    }
-
-    body::before,
-    header,
-    .hero,
-    #quizPanel,
-    #introPanel,
-    .result-actions,
-    footer {
-        display: none !important;
-    }
-
-    .container {
-        width: 100%;
-        padding: 0;
-    }
-
-    #resultPanel {
-        display: block !important;
-        background: white;
-        border: 0;
-        box-shadow: none;
-    }
-
-    .result-card {
-        color: #111827;
-        background: #f3f0ff;
-        border-color: #8b5cf6;
-    }
-
-    .result-card p,
-    .result-card .disclaimer,
-    .result-header p,
-    .chart-subtitle,
-    .result-note {
-        color: #334155;
-    }
-
-    .bar-track {
-        background: #e2e8f0;
-    }
-
-    .bar-fill {
-        print-color-adjust: exact;
-        -webkit-print-color-adjust: exact;
-    }
+  body { background: white; }
+  .container { width: 100%; margin: 0; }
+  header { background: white; color: black; padding: 10px 0; }
+  .no-print, button { display: none !important; }
+  .panel { box-shadow: none; border: 1px solid #ddd; break-inside: avoid; }
 }
 </style>
 </head>
 
 <body>
-<main class="container">
+<div class="container">
 
 <header>
-    <div class="logo">GAME <span>DNA</span></div>
-    <div class="badge">● آزمون سرگرمی</div>
+  <h1>🛒 قیمت‌سنج | PriceCheck</h1>
+  <p>قبل از خرید، قیمت واقعی محصولات رو مقایسه کن.</p>
 </header>
 
-<section class="hero">
-    <div class="eyebrow">DISCOVER YOUR PLAYSTYLE</div>
-    <h1>DNA گیمینگ <span>تو</span> چیه؟</h1>
-    <p>
-        ۱۰ موقعیت گیمینگ، ۴ سبک متفاوت و یک نتیجه اختصاصی.
-        جواب‌هایی را انتخاب کن که واقعاً به سلیقه‌ات نزدیک‌اند.
-    </p>
+<section class="panel">
+  <h2>⚙️ تنظیمات مقایسه</h2>
+
+  <div class="settings">
+    <div>
+      <label for="mode">نوع محصول</label>
+      <select id="mode">
+        <option value="weight">محصول وزنی</option>
+        <option value="volume">محصول حجمی</option>
+      </select>
+    </div>
+
+    <div>
+      <label for="unit">واحد ورودی</label>
+      <select id="unit">
+        <option value="g">گرم</option>
+        <option value="kg">کیلوگرم</option>
+      </select>
+    </div>
+
+    <div>
+      <label for="tax">مالیات (%)</label>
+      <input id="tax" type="number" min="0" max="100" step="any" value="0">
+    </div>
+
+    <div>
+      <label for="discount">تخفیف (%)</label>
+      <input id="discount" type="number" min="0" max="100" step="any" value="0">
+    </div>
+
+    <div>
+      <label for="sort">مرتب‌سازی</label>
+      <select id="sort">
+        <option value="input">ترتیب ورود</option>
+        <option value="asc">ارزان‌ترین اول</option>
+        <option value="desc">گران‌ترین اول</option>
+      </select>
+    </div>
+  </div>
+
+  <p class="note">
+    قیمت واحد برحسب هر ۱۰۰ گرم یا هر لیتر نمایش داده می‌شود.
+    مالیات و تخفیف به قیمت کل هر محصول اعمال می‌شوند.
+  </p>
 </section>
 
-<section class="panel" id="introPanel">
-    <h2 class="section-title">🎮 چهار بُعد گیمینگ</h2>
+<section class="panel">
+  <div class="product-top">
+    <h2 style="margin:0">📦 محصولات</h2>
+    <span id="count">۰ محصول</span>
+  </div>
 
-    <div class="dimensions">
-        <div class="dimension">
-            <div class="icon">⚔️</div>
-            <strong>رقابت</strong>
-            <small>برد و رکورد</small>
-        </div>
+  <div id="products" class="product-list"></div>
 
-        <div class="dimension">
-            <div class="icon">🤝</div>
-            <strong>همکاری</strong>
-            <small>کار تیمی</small>
-        </div>
+  <div class="toolbar no-print">
+    <button class="primary" id="addBtn">＋ افزودن محصول</button>
+    <button class="secondary" id="sampleBtn">پر کردن نمونه آزمایشی</button>
+    <button class="secondary" id="clearBtn">پاک کردن همه</button>
+  </div>
 
-        <div class="dimension">
-            <div class="icon">💎</div>
-            <strong>جمع‌آوری</strong>
-            <small>آیتم و پاداش</small>
-        </div>
-
-        <div class="dimension">
-            <div class="icon">🧭</div>
-            <strong>اکتشاف</strong>
-            <small>کشف و مأموریت</small>
-        </div>
-    </div>
-
-    <p style="color:var(--muted);font-size:12px;margin:20px 0">
-        پاسخ درست یا غلطی وجود ندارد؛ فقط سلیقه گیمینگ خودت را انتخاب کن.
-    </p>
-
-    <button class="btn btn-primary" id="startBtn" style="width:100%">
-        شروع آزمون ←
-    </button>
+  <div id="globalError" class="error" role="alert"></div>
 </section>
 
-<section class="panel hidden" id="quizPanel">
-
-    <div class="progress-row">
-        <span id="progressLabel">سؤال ۱ از ۱۰</span>
-        <span id="progressPercent">۱۰٪</span>
+<section class="panel">
+  <h2>📊 نتیجه مقایسه</h2>
+  <div class="summary">
+    <div class="stat">
+      <span>به‌صرفه‌ترین محصول</span>
+      <strong id="bestName">—</strong>
     </div>
-
-    <div
-        class="progress-track"
-        role="progressbar"
-        aria-label="پیشرفت آزمون"
-        aria-valuemin="0"
-        aria-valuemax="10"
-        aria-valuenow="0"
-        id="progressTrack"
-    >
-        <div class="progress-fill" id="progressFill"></div>
+    <div class="stat">
+      <span>کمترین قیمت واحد</span>
+      <strong id="bestPrice">—</strong>
     </div>
-
-    <div class="question-number" id="questionNumber">QUESTION 01</div>
-    <h2 class="question-title" id="questionTitle"></h2>
-
-    <div class="answers" id="answers"></div>
-
-    <div class="navigation">
-        <button class="btn btn-secondary" id="prevBtn">→ قبلی</button>
-        <button class="btn btn-primary" id="nextBtn" disabled>بعدی ←</button>
+    <div class="stat">
+      <span>اختلاف با گزینه دوم</span>
+      <strong id="difference">—</strong>
     </div>
+  </div>
+  <p class="note" id="summaryNote">
+    برای شروع، حداقل دو محصول معتبر وارد کن.
+  </p>
 </section>
 
-<section class="panel hidden" id="resultPanel">
-    <div class="result-header">
-        <div class="result-icon" id="resultIcon">🏆</div>
-        <div class="result-label">YOUR GAMING DNA</div>
-        <h2 id="resultTitle">نتیجه تو</h2>
-        <p id="resultDescription"></p>
-    </div>
-
-    <div class="result-card" id="resultCard">
-        <h3 id="cardTitle"></h3>
-        <p id="cardDescription"></p>
-        <p class="disclaimer">
-            این نتیجه صرفاً برای سرگرمی است و آزمون علمی شخصیت یا مهارت بازی نیست.
-        </p>
-    </div>
-
-    <h3 class="chart-title">📊 نقشه سبک‌های تو</h3>
-    <p class="chart-subtitle">
-        درصدها سهم هر بُعد از مجموع امتیازهای آزمون هستند.
-        همه چهار بُعد مستقل از یکدیگر محاسبه می‌شوند.
-    </p>
-
-    <div id="chart" aria-label="نمودار امتیاز سبک‌های گیمینگ"></div>
-
-    <div class="result-note" id="resultNote"></div>
-
-    <div class="result-actions">
-        <button class="btn btn-primary" id="restartBtn">
-            ↻ آزمون دوباره
-        </button>
-        <button class="btn btn-secondary" id="printBtn">
-            🖨️ چاپ نتیجه / ذخیره PDF
-        </button>
-    </div>
+<section class="panel">
+  <h2>📋 جدول مقایسه</h2>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>محصول</th>
+          <th>مقدار</th>
+          <th>قیمت نهایی</th>
+          <th>قیمت واحد</th>
+          <th>وضعیت</th>
+        </tr>
+      </thead>
+      <tbody id="tableBody"></tbody>
+    </table>
+  </div>
+  <div class="toolbar no-print">
+    <button class="secondary" id="printBtn">🖨️ چاپ / ذخیره PDF</button>
+  </div>
 </section>
 
-<footer>
-    GAME DNA · چهار سبک، هزاران روش بازی · ساخته‌شده برای گیمرها
-</footer>
+<p class="note">
+  قیمت‌سنج یک ابزار محاسباتی است؛ قیمت نهایی فروشگاه، کیفیت و تاریخ انقضا را هم بررسی کن.
+  اطلاعات فقط در همین مرورگر ذخیره می‌شود.
+</p>
 
-</main>
+</div>
 
 <script>
-const dimensions = {
-    competition: {
-        name: "رقابت",
-        icon: "⚔️",
-        colorClass: "competition"
-    },
-    cooperation: {
-        name: "همکاری",
-        icon: "🤝",
-        colorClass: "cooperation"
-    },
-    collection: {
-        name: "جمع‌آوری",
-        icon: "💎",
-        colorClass: "collection"
-    },
-    exploration: {
-        name: "اکتشاف",
-        icon: "🧭",
-        colorClass: "exploration"
-    }
-};
+const $ = id => document.getElementById(id);
+const STORAGE_KEY = "pricecheck-products-v1";
+let nextId = 1;
+let products = [];
 
-// هر گزینه چهار امتیاز دارد؛ یکی برای هر بُعد.
-// امتیاز هر گزینه از ۰ تا ۳ است.
-const questions = [
-    {
-        title: "وقتی وارد یک مسابقه می‌شوی، کدام بخش برایت جذاب‌تر است؟",
-        answers: [
-            { text: "از بقیه بهتر عمل کنم و رکورد بزنم.", scores: [3, 0, 0, 0] },
-            { text: "با تیم هماهنگ باشم و به موفقیت گروه کمک کنم.", scores: [0, 3, 0, 0] },
-            { text: "آیتم‌ها و پاداش‌های بیشتری به دست بیاورم.", scores: [0, 0, 3, 0] },
-            { text: "بخش‌های جدید را کشف کنم و مأموریت‌ها را پیش ببرم.", scores: [0, 0, 0, 3] }
-        ]
-    },
-    {
-        title: "در یک بازی جهان‌باز، معمولاً اولین کاری که می‌کنی چیست؟",
-        answers: [
-            { text: "چالش‌های سخت را پیدا می‌کنم تا توانایی‌ام را ثابت کنم.", scores: [3, 0, 0, 1] },
-            { text: "دوستانم را پیدا می‌کنم و با آن‌ها همراه می‌شوم.", scores: [0, 3, 0, 1] },
-            { text: "سراغ صندوق‌ها، منابع و آیتم‌های کمیاب می‌روم.", scores: [0, 0, 3, 1] },
-            { text: "نقشه را می‌گردم تا جاهای ناشناخته را پیدا کنم.", scores: [0, 0, 0, 3] }
-        ]
-    },
-    {
-        title: "اگر یک مرحله را ببازی، چه چیزی بیشتر تشویقت می‌کند دوباره تلاش کنی؟",
-        answers: [
-            { text: "اینکه دفعه بعد برنده شوم و رکورد بهتری ثبت کنم.", scores: [3, 0, 0, 0] },
-            { text: "اینکه با کمک هم‌تیمی‌هایم بهتر عمل کنیم.", scores: [0, 3, 0, 0] },
-            { text: "اینکه تجهیزات به
+function money(value) {
+  return new Intl.NumberFormat("fa-IR", {
+    maximumFractionDigits: 2
+  }).format(value) + " تومان";
+}
+
+function numberFa(value) {
+  return new Intl.NumberFormat("fa-IR", {
+    maximumFractionDigits: 2
+  }).format(value);
+}
+
+function getUnitLabel() {
+  return $("mode").value === "weight" ? "هر ۱۰۰ گرم" : "هر لیتر";
+}
+
+function getInputUnit() {
+  return $("unit").value;
+}
+
+function createProduct(data = {}) {
+  return {
+    id: nextId++,
+    name: data.name ?? "",
+    amount: data.amount ?? "",
+    price: data.price ?? ""
+  };
+}
+
+function save() {
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify({
+      products,
+      mode: $("mode").value,
+      unit: $("unit").value,
+      tax: $("tax").value,
+      discount: $("discount").value
+    }));
+  } catch (error) {
+    $("globalError").textContent =
+      "ذخیره در مرورگر انجام نشد. ممکن است فضای ذخیره‌سازی در دسترس نباشد.";
+  }
+}
+
+function load() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (!raw) return false;
+
+    const saved = JSON.parse(raw);
+    if (!saved || !Array.isArray(saved.products)) return false;
+
+    products = saved.products.map(item => createProduct(item));
+    if (products.length === 0) products.push(createProduct());
+
+    if (["weight", "volume"].includes(saved.mode)) {
+      $("mode").value = saved.mode;
+    }
+
+    if (["g", "kg", "ml", "l"].includes(saved.unit)) {
+      $("unit").value = saved.unit;
+    }
+
+    if (saved.mode === "volume" && !["ml", "l"].includes(saved.unit)) {
+      $("unit").value = "l";
+    }
+
+    if (saved.mode === "weight" && !["g", "kg"].includes(saved.unit)) {
+      $("unit").value = "g";
+    }
+
+    $("tax").value = saved.tax ?? "0";
+    $("discount").value = saved.discount ?? "0";
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+function syncUnits() {
+  const volume = $("mode").value === "volume";
+  const unitSelect = $("unit");
+  const previous = unitSelect.value;
+
+  unitSelect.innerHTML = volume
+    ? '<option value="ml">میلی‌لیتر</option><option value="l">لیتر</option>'
+    : '<option value="g">گرم</option><option value="kg">کیلوگرم</option>';
+
+  unitSelect.value = volume
+    ? (previous === "ml" ? "ml" : "l")
+    : (previous === "kg" ? "kg" : "g");
+
+  render();
+}
+
+function render() {
+  $("products").innerHTML = "";
+  $("count").textContent = numberFa(products.length) + " محصول";
+
+  products.forEach((product, index) => {
+    const article = document.createElement("article");
+    article.className = "product";
+    article.dataset.id = product.id;
+
+    const top = document.createElement("div");
+    top.className = "product-top";
+
+    const title = document.createElement("strong");
+    title.textContent = "محصول " + numberFa(index + 1);
+
+    const remove = document.createElement("button");
+    remove.className = "danger small no-print";
+    remove.textContent = "حذف";
+    remove.setAttribute("aria-label", "حذف محصول " + (index + 1));
+    remove.addEventListener("click", () => {
+      products = products.filter(item => item.id !== product.id);
+      if (products.length === 0) products.push(createProduct());
+      update();
+    });
+
+    top.append(title, remove);
+
+    const fields = document.createElement("div");
+    fields.className = "fields";
+
+    const nameField = makeField("نام محصول", "text", "مثلاً برنج", product.name);
+    const amountField = makeField(
+      "مقدار (" + $("unit").selectedOptions[0].textContent + ")",
+      "number", "مثلاً ۵۰۰", product.amount
+    );
+    const priceField = makeField("قیمت کل (تومان)", "number", "مثلاً ۲۵۰۰۰۰", product.price);
+
+    amountField.input.min = "0";
+    amountField.input.step = "any";
+    priceField.input.min = "0";
+    priceField.input.step = "any";
+
+    nameField.input.maxLength = 80;
+    nameField.input.autocomplete = "off";
+
+    nameField.input.addEventListener("input", event => {
+      product.name = event.target.value;
+      updateResultsOnly();
+    });
+
+    amountField.input.addEventListener("input", event => {
+      product.amount = event.target.value;
+      updateResultsOnly();
+    });
+
+    priceField.input.addEventListener("input", event => {
+      product.price = event.target.value;
+      updateResultsOnly();
+    });
+
+    fields.append(nameField.wrapper, amountField.wrapper, priceField.wrapper);
+
+    const result = document.createElement("div");
+    result.className = "result";
+    result.dataset.result = product.id;
+    result.textContent = "قیمت واحد پس از وارد کردن اطلاعات نمایش داده می‌شود.";
+
+    article.append(top, fields, result);
+    $("products").append(article);
+  });
+
+  updateResultsOnly();
+}
+
+function makeField(labelText, type, placeholder, value) {
+  const wrapper = document.createElement("div");
+  wrapper.className = "field";
+
+  const label = document.createElement("label");
+  label.textContent = labelText;
+
+  const input = document.createElement("input");
+  input.type = type;
+  input.placeholder = placeholder;
+  input.value = value;
+  if (type === "number") input.inputMode = "decimal";
+
+  label.appendChild(input);
+  wrapper.appendChild(label);
+
+  return { wrapper, input };
+}
+
+function validateSettings() {
+  const tax = Number($("tax").value);
+  const discount = Number($("discount").value);
+
+  if ($("tax").value.trim() === "" || !Number.isFinite(tax) || tax < 0 || tax > 100) {
+    return "مالیات باید عددی بین صفر تا ۱۰۰ باشد.";
+  }
+  if ($("discount").value.trim() === "" || !Number.isFinite(discount) ||
+      discount < 0 || discount > 100) {
+    return "تخفیف باید عددی بین صفر تا ۱۰۰ باشد.";
+  }
+  return "";
+}
+
+function calculate(product) {
+  const errors = [];
+  const amountText = String(product.amount).trim();
+  const priceText = String(product.price).trim();
+
+  if (!String(product.name).trim()) errors.push("نام محصول را وارد کن.");
+  if (amountText === "") errors.push("مقدار محصول وارد نشده است.");
+  if (priceText === "") errors.push("قیمت کل وارد نشده است.");
+
+  const amount = Number(amountText);
+  const price = Number(priceText);
+
+  if (amountText !== "" && (!Number.isFinite(amount) || amount <= 0)) {
+    errors.push("مقدار باید عددی بزرگ‌تر از صفر باشد.");
+  }
+  if (priceText !== "" && (!Number.isFinite(price) || price < 0)) {
+    errors.push("قیمت نمی‌تواند منفی یا نامعتبر باشد.");
+  }
+
+  if (errors.length) return { valid: false, errors };
+
+  const tax = Number($("tax").value);
+  const discount = Number($("discount").value);
+
+  if (!Number.isFinite(tax) || tax < 0 || tax > 100 ||
+      !Number.isFinite(discount) || discount < 0 || discount > 100) {
+    return { valid: false, errors: ["درصد مالیات یا تخفیف نامعتبر است."] };
+  }
+
+  const finalPrice = price * (1 - discount / 100) * (1 + tax / 100);
+  const unit = $("unit").value;
+  let normalizedAmount;
+
+  if ($("mode").value === "weight") {
+    normalizedAmount = unit === "kg" ? amount * 1000 : amount;
+    return {
+      valid: true,
+      finalPrice,
+      unitPrice: finalPrice / normalizedAmount * 100,
+      normalizedAmount,
+      amount,
+      price
+    };
+  }
+
+  normalizedAmount = unit === "ml" ? amount / 1000 : amount;
+
+  return {
+    valid: true,
+    finalPrice,
+    unitPrice: finalPrice / normalizedAmount,
+    normalizedAmount,
+    amount,
+    price
+  };
+}
+
+function updateResultsOnly() {
+  const settingsError = validateSettings();
+  $("globalError").textContent = settingsError;
+
+  const calculated = products.map(product => ({
+    product,
+    result: calculate(product)
+  }));
+
+  const valid = calculated.filter(item => item.result.valid);
+
+  // نتیجه‌های هر کارت
+  calculated.forEach(({ product, result }) => {
+    const article = document.querySelector('[data-id="' + product.id + '"]');
+    if (!article) return;
+
+    const box = article.querySelector("[data-result]");
+    article.classList.remove("best");
+
+    if (!result.valid) {
+      box.innerHTML = "";
+      const error = document.createElement("div");
+      error.className = "error";
+      error.textContent = result.errors.join(" ");
+      box.appendChild(error);
+      return;
+    }
+
+    box.textContent = "";
+    const line = document.createElement("div");
+    line.append("قیمت نهایی: ");
+
+    const final = document.createElement("strong");
+    final.textContent = money(result.finalPrice);
+    line.appendChild(final);
+
+    const unitLine = document.createElement("div");
+    unitLine.append(getUnitLabel() + ": ");
+    const unitPrice = document.createElement("strong");
+    unitPrice.textContent = money(result.unitPrice);
+    unitLine.appendChild(unitPrice);
+
+    box.append(line, unitLine);
+  });
+
+  const allValid = valid.length === products.length &&
+                   products.length > 0 &&
+                   !settingsError;
+
+  if (allValid && valid.length >= 1) {
+    const min = Math.min(...valid.map(item => item.result.unitPrice));
+    const winners = valid.filter(item => Math.abs(item.result.unitPrice - min) < 1e-9);
+
+    winners.forEach(item => {
+      const article = document.querySelector('[data-id="' + item.product.id + '"]');
+      if (article) article.classList.add("best");
+      const box = article?.querySelector("[data-result]");
+      if (box) {
+        const tag = document.createElement("div");
+        tag.className = "best-tag";
+        tag.textContent = "✓ به‌صرفه‌ترین گزینه";
+        box.appendChild(tag);
+      }
+    });
+
+    $("bestName").textContent = winners.map(item => item.product.name.trim()).join("، ");
+    $("bestPrice").textContent = money(min);
+
+    if (valid.length >= 2) {
+      const distinct = [...new Set(valid.map(item => item.result.unitPrice))]
+        .sort((a, b) => a - b);
+      if (distinct.length >= 2) {
+        const gap = distinct[1] - distinct[0];
+        const pct = gap / distinct[1] * 100;
+        $("difference").textContent = numberFa(pct) + "٪ ارزان‌تر";
+        $("summaryNote").textContent =
+          "کمترین قیمت واحد " + getUnitLabel() +
+          " است. گزینه ارزان‌تر را با توجه به کیفیت و نیازت انتخاب کن.";
+      } else {
+        $("difference").textContent = "۰٪";
+        $("summaryNote").textContent =
+          "محصولات معتبر قیمت واحد یکسانی دارند.";
+      }
+    } else {
+      $("difference").textContent = "—";
+      $("summaryNote").textContent =
+        "برای محاسبه اختلاف درصدی، حداقل دو محصول معتبر لازم است.";
+    }
+  } else {
+    $("bestName").textContent = "—";
+    $("bestPrice").textContent = "—";
+    $("difference").textContent = "—";
+    $("summaryNote").textContent = settingsError
+      ? "ابتدا تنظیمات را اصلاح کن."
+      : "برای نمایش مقایسه، اطلاعات همه محصولات باید معتبر باشد.";
+  }
+
+  // جدول مقایسه؛ محصولات نامعتبر در جدول هم مشخص می‌شوند.
+  const sort = $("sort").value;
+  let tableRows = [...calculated];
+
+  if (sort === "asc") {
+    tableRows.sort((a, b) => {
+      if (!a.result.valid) return 1;
+      if (!b.result.valid) return -1;
+      return a.result.unitPrice - b.result.unitPrice;
+    });
+  } else if (sort === "desc") {
+    tableRows.sort((a, b) => {
+      if (!a.result.valid) return 1;
+      if (!b.result.valid) return -1;
+      return b.result.unitPrice - a.result.unitPrice;
+    });
+  }
+
+  $("tableBody").innerHTML = "";
+
+  tableRows.forEach(({ product, result }) => {
+    const row = document.createElement("tr");
+    const amountLabel = $("unit").selectedOptions[0].textContent;
+    const values = [
+      product.name.trim() || "بدون نام",
+      product.amount === "" ? "—" : numberFa(Number(product.amount)) + " " + amountLabel,
+      result.valid ? money(result.finalPrice) : "—",
+      result.valid ? money(result.unitPrice) + " / " + getUnitLabel() : "—",
+      result.valid ? "معتبر" : "نیازمند اصلاح"
+    ];
+
+    values.forEach((value, index) => {
+      const cell = document.createElement("td");
+      cell.textContent = value;
+      row.appendChild(cell);
+      if (index === 4 && !result.valid) cell.style.color = "var(--red)";
+    });
+
+    $("tableBody").appendChild(row);
+  });
+
+  save();
+}
+
+function update() {
+  render();
+  save();
+}
+
+$("addBtn").addEventListener("click", () => {
+  products.push(createProduct());
+  render();
+  const inputs = $("products").lastElementChild?.querySelectorAll("input");
+  inputs?.[0]?.focus();
+});
+
+$("mode").addEventListener("change", () => {
+  syncUnits();
+});
+
+$("unit").addEventListener("change", update);
+
+$("tax").addEventListener("input", updateResultsOnly);
+$("discount").addEventListener("input", updateResultsOnly);
+$("sort").addEventListener("change", updateResultsOnly);
+
+$("sampleBtn").addEventListener("click", () => {
+  $("mode").value = "weight";
+  $("unit").innerHTML = '<option value="g">گرم</option><option value="kg">کیلوگرم</option>';
+  $("unit").value = "g";
+  $("tax").value = "0";
+  $("discount").value = "0";
+
+  products = [
+    createProduct({ name: "بسته اول", amount: "200", price: "120000" }),
+    createProduct({ name: "بسته دوم", amount: "500", price: "250000" })
+  ];
+
+  render();
+});
+
+$("clearBtn").addEventListener("click", () => {
+  if (!confirm("همه محصولات پاک شوند؟")) return;
+  products = [createProduct()];
+  $("tax").value = "0";
+  $("discount").value = "0";
+  render();
+});
+
+$("printBtn").addEventListener("click", () => window.print());
+
+if (!load()) products = [createProduct()];
+syncUnits();
 ```
